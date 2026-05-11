@@ -28,7 +28,7 @@
 
   /* fluid type scale */
   --fs-display: clamp(40px, 6vw + 4px, 64px);
-  --fs-hero:    clamp(56px, 12vw, 155px);
+  --fs-hero:    clamp(56px, 12.5vw, 180px);
   --fs-h3:      clamp(28px, 3vw, 40px);
   --fs-h4:      clamp(20px, 1.6vw, 22px);
   --fs-body:    clamp(14px, 1.05vw, 16px);
@@ -393,7 +393,21 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 0.96;
   letter-spacing: -0.06em;
   color: var(--c-text);
+  width: max-content;
+  max-width: 100%;
+  padding-right: 0.08em;
+  overflow: visible;
   margin: 0;
+}
+.hero__title-accent {
+  display: inline-block;
+  padding-right: 0.12em;
+  margin-right: -0.12em;
+  color: transparent;
+  background: linear-gradient(90deg, #e15fab 0%, #8966d7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .hero__lead { color: var(--c-text-mute); margin: 0; max-width: 540px; }
 .hero__cta { display: flex; gap: 10px; flex-wrap: wrap; }
