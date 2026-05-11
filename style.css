@@ -276,9 +276,8 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: space-between;
   gap: 24px;
 }
-.logo { display: inline-flex; align-items: center; gap: 10px; }
-.logo__mark { width: 28px; height: 28px; }
-.logo__text { font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.logo { display: inline-flex; align-items: center; }
+.logo__image { display: block; width: 147px; height: auto; }
 
 .nav {
   display: flex;
@@ -1155,20 +1154,10 @@ button { font-family: inherit; cursor: pointer; }
 .social:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,77,151,0.4); }
 
 .footer__sk {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--c-line-strong);
-  padding: 8px 14px;
-  border-radius: 12px;
-  transition: background .2s ease;
+  display: block;
+  width: 123px;
+  height: auto;
 }
-.footer__sk:hover { background: rgba(255,255,255,0.08); }
-.footer__sk-text { font-weight: 500; color: var(--c-text-mute); }
 
 .footer__legal {
   display: flex;
@@ -1184,15 +1173,12 @@ button { font-family: inherit; cursor: pointer; }
 
 .footer__wordmark {
   margin: clamp(20px, 3vw, 40px) 0 0;
-  font-family: 'Geologica';
-  font-weight: 900;
-  font-size: clamp(60px, 18vw, 280px);
-  line-height: 0.85;
-  letter-spacing: -0.06em;
-  text-align: center;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
+  width: 100%;
+}
+.footer__wordmark img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .footer__copy {
   text-align: center;
