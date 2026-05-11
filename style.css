@@ -573,10 +573,18 @@ button { font-family: inherit; cursor: pointer; }
   .inside-grid { grid-template-columns: 1fr; }
   .card { padding: 22px; min-height: 220px; }
   .card--inside-1, .card--inside-2, .card--inside-3, .card--inside-4, .card--inside-5 {
-    grid-column: 1; grid-row: auto;
+    grid-column: 1; grid-row: auto; align-items: stretch;
   }
-  .card__body { max-width: 60%; }
-  .card__img { max-width: calc(100% - 28px); max-height: calc(100% - 28px); }
+  .card__body { max-width: none; }
+  .card__img {
+    position: static;
+    align-self: center;
+    width: min(100%, 280px);
+    max-width: 100%;
+    max-height: none;
+    margin-top: auto;
+    transform: none;
+  }
 }
 
 /* ============================================================
