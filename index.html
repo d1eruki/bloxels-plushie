@@ -8,9 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700;900&family=Manrope:wght@700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" />
 <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body id="top">
 
 <!-- ────────── HEADER ────────── -->
 <header class="header" id="header">
@@ -41,7 +42,7 @@
 <div class="mobile-menu" id="mobileMenu" hidden>
   <div class="mobile-menu__panel">
     <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть">
-      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="material-icons-round" aria-hidden="true">close</span>
     </button>
     <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
       <a href="#whats-inside">Что внутри</a>
@@ -55,7 +56,7 @@
   </div>
 </div>
 
-<main id="top">
+<main>
 
 <!-- ────────── HERO ────────── -->
 <section class="section hero">
@@ -170,7 +171,7 @@
     <div class="why-grid">
       <div class="why-cell">
         <div class="icon-tile" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.65-7 10-7 10z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+          <span class="material-icons-round">favorite</span>
         </div>
         <div class="why-cell__no">01 — Эмоции</div>
         <h4 class="why-cell__title">Полезный<br/>подарок</h4>
@@ -178,7 +179,7 @@
       </div>
       <div class="why-cell">
         <div class="icon-tile" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 3l9 5v8l-9 5-9-5V8l9-5zM3 8l9 5 9-5M12 13v9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+          <span class="material-icons-round">view_in_ar</span>
         </div>
         <div class="why-cell__no">02 — Творчество</div>
         <h4 class="why-cell__title">3D-творчество</h4>
@@ -186,7 +187,7 @@
       </div>
       <div class="why-cell">
         <div class="icon-tile" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6M14 4l-4 16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <span class="material-icons-round">code</span>
         </div>
         <div class="why-cell__no">03 — Логика</div>
         <h4 class="why-cell__title">Основы<br/>программирования</h4>
@@ -194,7 +195,7 @@
       </div>
       <div class="why-cell">
         <div class="icon-tile" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M14 7h7v7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <span class="material-icons-round">trending_up</span>
         </div>
         <div class="why-cell__no">04 — Будущее</div>
         <h4 class="why-cell__title">Навыки<br/>будущего</h4>
@@ -451,10 +452,10 @@
         <div class="footer__small">Следите за&nbsp;нами</div>
         <div class="socials">
           <a class="social" href="#" aria-label="Telegram">
-            <svg viewBox="0 0 24 24" width="20" height="17" aria-hidden="true"><path fill="currentColor" d="M.93 6.92L18.67.08c.82-.3 1.54.2 1.27 1.45L17.93 15.76c-.22 1-.82 1.25-1.66.77l-4.6-3.39-2.22 2.14c-.24.24-.45.45-.93.45l.33-4.68 8.52-7.7c.37-.33-.08-.51-.57-.19L5.26 9.8.72 8.38c-.99-.31-1.01-.99.21-1.46z"/></svg>
+            <span class="material-icons-round" aria-hidden="true">send</span>
           </a>
           <a class="social" href="#" aria-label="VK">
-            <svg viewBox="0 0 24 16" width="22" height="14" aria-hidden="true"><path fill="currentColor" d="M12.9 14.5C5.7 14.5 1.6 9.6 1.4 1.5h3.6c.1 6 2.7 8.5 4.8 9V1.5h3.4v5.2c2.1-.2 4.3-2.6 5-5.2h3.4c-.6 3.2-3 5.6-4.7 6.6 1.7.8 4.4 2.9 5.4 6.7H19c-.8-2.5-2.8-4.4-5.4-4.7v4.7h-.7z"/></svg>
+            <span class="material-icons-round" aria-hidden="true">groups</span>
           </a>
         </div>
       </div>
