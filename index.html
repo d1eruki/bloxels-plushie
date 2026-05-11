@@ -1,0 +1,1803 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Блоксели — Лутай кота</title>
+<meta name="description" content="Плюшевый кот Блоксель + детская лицензия на платформу. Предзаказ со скидкой 35% — ограниченный тираж." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700;900&family=Manrope:wght@700&display=swap" />
+<style>
+/* ============================================================
+   BLOXELS — Landing
+   Fluid responsive between 375 → 1440
+   ============================================================ */
+
+:root {
+  --c-bg-1: #1a0c39;
+  --c-bg-2: #14091f;
+  --c-text: #f2f0f4;
+  --c-text-mute: #bba8d4;
+  --c-text-dim: #7a7682;
+  --c-pink: #ff4d97;
+  --c-violet: #c93dd6;
+  --c-purple: #7b3fe4;
+  --c-line: rgba(255,255,255,0.07);
+  --c-line-strong: rgba(255,255,255,0.10);
+  --c-card: rgba(255,255,255,0.04);
+
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --pad-x: clamp(20px, 4.5vw, 60px);
+  --section-gap: clamp(80px, 9vw, 140px);
+
+  --container-max: 1320px;
+  --header-h: clamp(64px, 6vw, 80px);
+
+  /* fluid type scale */
+  --fs-display: clamp(40px, 6vw + 4px, 64px);
+  --fs-hero:    clamp(56px, 12vw, 155px);
+  --fs-h3:      clamp(28px, 3vw, 40px);
+  --fs-h4:      clamp(20px, 1.6vw, 22px);
+  --fs-body:    clamp(14px, 1.05vw, 16px);
+  --fs-eyebrow: 12px;
+
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Geologica', system-ui, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--c-text);
+  background: var(--c-bg-2);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(60% 60% at 80% 5%, rgba(201,61,214,0.35) 0%, transparent 70%),
+    radial-gradient(70% 60% at 10% 40%, rgba(123,63,228,0.28) 0%, transparent 70%),
+    radial-gradient(50% 60% at 85% 85%, rgba(255,77,151,0.20) 0%, transparent 70%),
+    linear-gradient(180deg, #1a0c39 0%, #14091f 40%, #1a0c39 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + var(--pad-x)*2);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+  position: relative;
+}
+
+/* ============================================================
+   TYPE
+   ============================================================ */
+.h-display {
+  font-family: 'Geologica', sans-serif;
+  font-weight: 700;
+  font-size: var(--fs-display);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--c-text);
+  margin: 0;
+  text-wrap: pretty;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.083em;
+  color: var(--c-text-mute);
+  text-transform: none;
+}
+.eyebrow .rule {
+  width: 24px;
+  height: 1px;
+  background: var(--c-text-mute);
+  display: inline-block;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 26px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--c-text);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease),
+              background .25s var(--ease), border-color .25s var(--ease),
+              opacity .2s ease;
+  white-space: nowrap;
+  position: relative;
+  isolation: isolate;
+}
+.btn:focus-visible {
+  outline: 2px solid rgba(255,77,151,0.6);
+  outline-offset: 3px;
+}
+
+/* PRIMARY */
+.btn--primary {
+  background: linear-gradient(90deg, #e15fab 0%, #8966d7 100%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.18),
+    0 6px 24px -8px rgba(225,95,171,0.45);
+  color: #fffaf5;
+}
+.btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255,255,255,0.25),
+    0 10px 32px -8px rgba(225,95,171,0.7);
+  background: linear-gradient(90deg, #ec71b6 0%, #9676e0 100%);
+}
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 2px 4px 0 rgba(0,0,0,0.2),
+    0 4px 12px -8px rgba(225,95,171,0.4);
+  background: linear-gradient(90deg, #c84e95 0%, #7657c1 100%);
+}
+.btn--primary:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* GHOST / OUTLINE */
+.btn--ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.20);
+  color: var(--c-text);
+}
+.btn--ghost:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-1px);
+}
+.btn--ghost:active {
+  background: rgba(255,255,255,0.10);
+  transform: translateY(0);
+}
+
+.btn--sm { height: 40px; padding: 0 18px; font-size: 13px; }
+
+/* ============================================================
+   PILLS / BADGES
+   ============================================================ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.083em;
+  line-height: 1;
+}
+.pill--accent {
+  background: rgba(255,77,151,0.12);
+  border: 1px solid rgba(255,122,184,0.4);
+  color: #ffb8d6;
+}
+.pill--accent .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--c-pink);
+  box-shadow: 0 0 12px var(--c-pink);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.5; } }
+
+.pill--solid {
+  background: linear-gradient(90deg, #ff4d97 0%, #c93dd6 100%);
+  color: #fff;
+}
+.pill--outline {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: var(--c-text-mute);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  min-width: 43px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  box-shadow:
+    inset 2px 2px 4px 0 rgba(255,255,255,0.25),
+    inset -4px -4px 4px 0 rgba(0,0,0,0.25);
+}
+.badge--pink   { background: linear-gradient(135deg, #ec66b1 0%, #d0599f 100%); }
+.badge--violet { background: linear-gradient(135deg, #ba8deb 0%, #7f4cd4 100%); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: rgba(20, 9, 31, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--c-line);
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo { display: inline-flex; align-items: center; gap: 10px; }
+.logo__mark { width: 28px; height: 28px; }
+.logo__text { font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+
+.nav {
+  display: flex;
+  gap: clamp(14px, 2vw, 28px);
+  font-size: 13px;
+  color: var(--c-text-mute);
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+}
+.nav a { transition: color .2s ease; }
+.nav a:hover { color: var(--c-text); }
+
+.header__actions { display: flex; align-items: center; gap: 12px; }
+
+/* burger */
+.burger {
+  display: none;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--c-line-strong);
+  border-radius: 10px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+.burger span {
+  display: block;
+  width: 16px; height: 1.5px;
+  background: #fff;
+  border-radius: 2px;
+}
+.burger:hover { background: rgba(255,255,255,0.10); }
+
+/* mobile menu */
+.mobile-menu {
+  position: fixed; inset: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(20,9,31,0.5);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s var(--ease);
+}
+.mobile-menu[hidden] { display: flex; }
+.mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu__panel {
+  width: min(85vw, 360px);
+  height: 100vh;
+  background: linear-gradient(180deg, #261247 0%, #1a0c39 100%);
+  border-left: 1px solid var(--c-line-strong);
+  padding: 80px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  transform: translateX(100%);
+  transition: transform .35s var(--ease);
+}
+.mobile-menu.is-open .mobile-menu__panel { transform: translateX(0); }
+.mobile-menu__close {
+  position: absolute;
+  top: 24px; right: 24px;
+  width: 46px; height: 46px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--c-line-strong);
+  border-radius: 50%;
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s ease;
+}
+.mobile-menu__close:hover { background: rgba(255,255,255,0.14); }
+.mobile-menu__nav { display: flex; flex-direction: column; gap: 24px; }
+.mobile-menu__nav a {
+  font-size: 18px; font-weight: 500; color: var(--c-text);
+  transition: color .2s ease;
+}
+.mobile-menu__nav a:hover { color: var(--c-pink); }
+.mobile-menu__cta { margin-top: auto; height: 50px; }
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section {
+  padding: var(--section-gap) 0;
+  position: relative;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 80px);
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 56px);
+  padding-bottom: clamp(20px, 2vw, 24px);
+  position: relative;
+}
+.section-head__lead {
+  color: var(--c-text-mute);
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  max-width: 540px;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .section-head { grid-template-columns: 1fr; align-items: start; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); }
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+  min-height: clamp(440px, 50vw, 620px);
+}
+.hero__copy { display: flex; flex-direction: column; gap: clamp(20px, 2.5vw, 32px); }
+.hero__title {
+  font-family: 'Geologica', sans-serif;
+  font-weight: 900;
+  font-size: var(--fs-hero);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  color: var(--c-text);
+  margin: 0;
+}
+.hero__lead { color: var(--c-text-mute); margin: 0; max-width: 540px; }
+.hero__cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.hero__visual {
+  position: relative;
+  aspect-ratio: 1.1 / 1;
+  min-height: clamp(280px, 40vw, 600px);
+}
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.hero__glow--1 {
+  width: 70%; height: 70%;
+  top: 5%; left: 10%;
+  background: rgba(201,61,214,0.45);
+}
+.hero__glow--2 {
+  width: 60%; height: 60%;
+  bottom: 5%; right: 5%;
+  background: rgba(123,63,228,0.45);
+}
+.diamond {
+  position: absolute;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff7ab8 0%, #c93dd6 100%);
+  box-shadow: 0 0 40px rgba(201,61,214,0.55);
+  pointer-events: none;
+}
+.diamond--hero-1 {
+  width: clamp(80px, 12vw, 165px);
+  height: clamp(80px, 12vw, 165px);
+  top: 12%; right: -2%;
+  transform: rotate(-28deg);
+  opacity: 0.7;
+}
+.diamond--hero-2 {
+  width: clamp(60px, 9vw, 120px);
+  height: clamp(60px, 9vw, 120px);
+  bottom: 5%; left: 0%;
+  transform: rotate(18deg);
+  opacity: 0.5;
+}
+.cats {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.cat {
+  position: absolute;
+  width: 45%;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(255,77,151,0.3));
+  will-change: transform;
+  animation: float 5s ease-in-out infinite;
+}
+.cat--1 { top: 8%;  left: 18%; width: 42%; animation-delay: -1.2s; }
+.cat--2 { top: 12%; left: 45%; width: 38%; animation-delay: -2.6s; z-index: 1; }
+.cat--3 { top: 38%; left: 6%;  width: 44%; animation-delay: 0s; z-index: 2; }
+.cat--4 { top: 35%; left: 50%; width: 48%; animation-delay: -3.5s; z-index: 3; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(-1.2deg); }
+}
+
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__visual { order: -1; aspect-ratio: 1.2 / 1; max-width: 520px; margin: 0 auto; width: 100%; }
+}
+
+/* ============================================================
+   WHAT'S INSIDE
+   ============================================================ */
+.inside-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.card {
+  position: relative;
+  background: var(--c-card);
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--radius-xl);
+  padding: 27px;
+  min-height: 240px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  backdrop-filter: blur(20px);
+  transition: transform .3s var(--ease), border-color .3s var(--ease);
+}
+.card:hover { transform: translateY(-3px); border-color: rgba(255,122,184,0.35); }
+
+.card--featured {
+  background: linear-gradient(135deg, rgba(255,77,151,0.16) 0%, rgba(123,63,228,0.12) 100%);
+  border-color: transparent;
+}
+.card--wide { grid-column: span 1; }
+.card__title { font-family: 'Geologica'; font-weight: 700; font-size: var(--fs-h4); margin: 0; line-height: 1.1; }
+.card__lead { color: var(--c-text-mute); font-size: var(--fs-body); margin: 0; line-height: 1.4; max-width: 60%; }
+.card__body { display: flex; flex-direction: column; gap: 13px; max-width: 65%; z-index: 2; position: relative; }
+.card__img { position: absolute; pointer-events: none; user-select: none; }
+
+/* inside positions */
+.card--inside-1 { grid-column: 1; grid-row: 1; }
+.card--inside-2 { grid-column: 2; grid-row: 1; }
+.card--inside-3 { grid-column: 3; grid-row: 1; }
+.card--inside-4 { grid-column: 1 / span 2; grid-row: 2; flex-direction: row; align-items: center; padding: 27px; gap: 20px; }
+.card--inside-5 { grid-column: 3; grid-row: 2; }
+
+.card__img--inside-1 { right: -10px; bottom: -20px; width: 50%; }
+.card__img--inside-2 { right: -20px; top: 20%; width: 60%; mix-blend-mode: lighten; }
+.card__img--inside-3 { right: -20px; top: 8%; width: 60%; mix-blend-mode: lighten; }
+.card__img--inside-4 { right: 0; top: 50%; transform: translateY(-50%); width: 45%; mix-blend-mode: lighten; }
+.card__img--inside-5 { right: -8%; top: -8%; width: 70%; mix-blend-mode: lighten; transform: rotate(-4deg); }
+
+.card--bonus { border-style: dashed; }
+.btn--inside { align-self: flex-start; margin-top: auto; position: relative; z-index: 2; }
+
+@media (max-width: 1100px) {
+  .inside-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+  .card--inside-1 { grid-column: 1; grid-row: 1; }
+  .card--inside-2 { grid-column: 2; grid-row: 1; }
+  .card--inside-3 { grid-column: 1; grid-row: 2; }
+  .card--inside-4 { grid-column: 2; grid-row: 2; flex-direction: column; align-items: stretch; }
+  .card--inside-5 { grid-column: 1 / -1; grid-row: 3; }
+  .card__img--inside-4 { right: -10%; top: 10%; transform: none; width: 50%; }
+}
+@media (max-width: 620px) {
+  .inside-grid { grid-template-columns: 1fr; }
+  .card { padding: 22px; min-height: 220px; }
+  .card--inside-1, .card--inside-2, .card--inside-3, .card--inside-4, .card--inside-5 {
+    grid-column: 1; grid-row: auto;
+  }
+  .card__lead, .card__body { max-width: 60%; }
+}
+
+/* ============================================================
+   WHY (benefits)
+   ============================================================ */
+.why-grid {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+}
+.why-cell {
+  padding: clamp(20px, 2.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-right: 1px solid var(--c-line);
+}
+.why-cell:last-child { border-right: none; }
+.icon-tile {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--c-line-strong);
+  display: grid; place-items: center;
+  color: var(--c-text);
+}
+.icon-tile svg { width: 22px; height: 22px; }
+.why-cell__no { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--c-text-mute); }
+.why-cell__title { font-family: 'Geologica'; font-weight: 700; font-size: var(--fs-h4); line-height: 1.1; margin: 0; }
+.why-cell__lead { color: var(--c-text-mute); margin: 0; font-size: var(--fs-body); line-height: 1.4; }
+
+.diamond--why {
+  width: clamp(100px, 14vw, 215px);
+  height: clamp(100px, 14vw, 215px);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(201,61,214,0.5), rgba(123,63,228,0.4));
+  box-shadow: 0 0 40px rgba(201,61,214,0.5);
+  position: absolute;
+  top: 0; right: 0;
+  transform: rotate(-28deg);
+  pointer-events: none;
+}
+
+.why-foot {
+  margin-top: clamp(32px, 4vw, 56px);
+  padding: 24px 0;
+  border-top: 1px solid var(--c-line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: end;
+}
+.why-foot__title {
+  font-family: 'Geologica';
+  font-weight: 700;
+  font-size: clamp(22px, 2.3vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.why-foot__cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+
+@media (max-width: 1100px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-cell:nth-child(2) { border-right: none; }
+  .why-cell:nth-child(1), .why-cell:nth-child(2) { border-bottom: 1px solid var(--c-line); }
+}
+@media (max-width: 620px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .why-cell { border-right: none; border-bottom: 1px solid var(--c-line); }
+  .why-cell:last-child { border-bottom: none; }
+  .why-foot { grid-template-columns: 1fr; }
+  .why-foot__cta { justify-content: flex-start; }
+}
+
+/* ============================================================
+   SETS
+   ============================================================ */
+.sets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.set-card {
+  background: var(--c-card);
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--radius-xl);
+  padding: clamp(22px, 2.2vw, 29px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  backdrop-filter: blur(20px);
+  transition: border-color .3s var(--ease);
+}
+.set-card:hover { border-color: rgba(255,122,184,0.4); }
+.set-card--featured {
+  background: linear-gradient(135deg, rgba(255,77,151,0.18) 0%, rgba(123,63,228,0.12) 100%);
+  border-color: rgba(255,122,184,0.35);
+}
+.set-card__top { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+.set-card__title { font-family: 'Geologica'; font-weight: 700; font-size: var(--fs-h3); line-height: 1; letter-spacing: -0.04em; margin: 0; }
+.set-card__lead { color: var(--c-text-mute); margin: 0; font-size: var(--fs-body); }
+.set-card__media {
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255,77,151,0.18) 0%, rgba(123,63,228,0.12) 100%);
+  padding: 16px;
+  min-height: clamp(160px, 18vw, 195px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.set-card__media--big img {
+  width: 28%;
+  filter: drop-shadow(0 16px 30px rgba(0,0,0,0.4));
+  animation: float 5s ease-in-out infinite;
+}
+.set-card__media--big img:nth-child(1) { animation-delay: 0s; }
+.set-card__media--big img:nth-child(2) { animation-delay: -1.2s; }
+.set-card__media--big img:nth-child(3) { animation-delay: -2.4s; }
+.set-card__media--big img:nth-child(4) { animation-delay: -3.6s; }
+.set-card__media--small img {
+  width: 38%;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,0.4));
+  animation: float 5s ease-in-out infinite;
+}
+.set-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.set-card__list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: var(--fs-body);
+  color: var(--c-text);
+  line-height: 1.4;
+}
+.set-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 7px;
+  width: 12px; height: 8px;
+  border-left: 2px solid var(--c-pink);
+  border-bottom: 2px solid var(--c-pink);
+  transform: rotate(-45deg);
+}
+.set-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-line);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.price { display: flex; align-items: baseline; gap: 12px; }
+.price__old {
+  font-size: var(--fs-body);
+  color: var(--c-text-mute);
+  text-decoration: line-through;
+}
+.price__new {
+  font-family: 'Geologica';
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.diamond--sets-1 {
+  width: 90px; height: 90px;
+  top: -10px; left: -3px;
+  transform: rotate(-38deg);
+}
+.diamond--sets-2 {
+  width: 90px; height: 90px;
+  top: 15%; left: 82px;
+  transform: rotate(20deg);
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .sets-grid { grid-template-columns: 1fr; }
+  .diamond--sets-1, .diamond--sets-2 { display: none; }
+}
+
+/* ============================================================
+   PRESALE
+   ============================================================ */
+.presale {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 2vw, 32px);
+  padding: clamp(36px, 4vw, 56px);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(255,77,151,0.18) 0%, rgba(123,63,228,0.14) 50%, rgba(10,6,19,0.4) 100%);
+  border: 1px solid var(--c-line);
+  backdrop-filter: blur(20px);
+}
+.presale__copy { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+.presale__panel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--c-line-strong);
+  border-radius: 28px;
+  padding: clamp(20px, 2.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  backdrop-filter: blur(24px);
+}
+.presale__panel-head {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.083em;
+  color: var(--c-text);
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.countdown__cell {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--c-line-strong);
+  border-radius: 16px;
+  padding: clamp(14px, 1.5vw, 18px) 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.countdown__num {
+  font-family: 'Geologica';
+  font-weight: 700;
+  font-size: clamp(28px, 3.5vw, 44px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+  transition: color .15s ease;
+}
+.countdown__lbl {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--c-text-mute);
+}
+
+.progress { display: flex; flex-direction: column; gap: 10px; }
+.progress__row { display: flex; justify-content: space-between; align-items: baseline; }
+.progress__label { font-size: 12px; color: var(--c-text-mute); letter-spacing: 0.083em; }
+.progress__value { font-size: 12px; color: var(--c-text); font-weight: 500; }
+.progress__track {
+  height: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4d97 0%, #c93dd6 50%, #7b3fe4 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(255,77,151,0.6);
+  position: relative;
+}
+.progress__head {
+  position: absolute;
+  right: -2px; top: -2px;
+  width: 4px; height: 16px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 0 12px #fff;
+}
+.progress__note {
+  font-size: 12px;
+  letter-spacing: 0.083em;
+  color: var(--c-text-mute);
+}
+
+@media (max-width: 900px) {
+  .presale { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .countdown { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .countdown__cell { padding: 12px 4px; }
+}
+
+/* ============================================================
+   AUDIENCE
+   ============================================================ */
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.aud-card {
+  position: relative;
+  background: var(--c-card);
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--radius-xl);
+  padding: clamp(22px, 2.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 270px;
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: border-color .3s var(--ease), transform .3s var(--ease);
+}
+.aud-card:hover { transform: translateY(-3px); border-color: rgba(255,122,184,0.3); }
+.aud-card__tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--c-text-mute);
+}
+.aud-card__title { font-family: 'Geologica'; font-weight: 700; font-size: var(--fs-h3); line-height: 1; letter-spacing: -0.03em; margin: 0; }
+.aud-card__lead { color: var(--c-text-mute); margin: 0; font-size: var(--fs-body); }
+.aud-card__no {
+  font-family: 'Geologica';
+  font-weight: 700;
+  font-size: clamp(48px, 5vw, 80px);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.10);
+  margin-top: auto;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  align-self: flex-end;
+}
+
+.diamond--aud-1 {
+  width: 60px; height: 60px;
+  top: 4%; right: 11%;
+  background: linear-gradient(135deg, #c93dd6, #7b3fe4);
+  box-shadow: 0 0 30px rgba(201,61,214,0.5);
+  transform: rotate(-22deg);
+  opacity: 0.6;
+}
+.diamond--aud-2 {
+  width: 60px; height: 60px;
+  top: 6%; right: 4%;
+  background: linear-gradient(135deg, #c93dd6, #7b3fe4);
+  box-shadow: 0 0 30px rgba(201,61,214,0.5);
+  transform: rotate(28deg);
+}
+
+@media (max-width: 900px) {
+  .audience-grid { grid-template-columns: 1fr; }
+  .diamond--aud-1, .diamond--aud-2 { display: none; }
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: clamp(24px, 4vw, 80px);
+  align-items: start;
+}
+.faq__head { display: flex; flex-direction: column; gap: 20px; }
+.accordion {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--c-line);
+  border-radius: 24px;
+  overflow: hidden;
+}
+.acc-item { border-bottom: 1px solid var(--c-line); }
+.acc-item:last-child { border-bottom: none; }
+.acc-item > summary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  list-style: none;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.acc-item > summary::-webkit-details-marker { display: none; }
+.acc-item:hover > summary { background: rgba(255,255,255,0.02); }
+.acc-item__no {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--c-text-mute);
+  flex-shrink: 0;
+}
+.acc-item__q {
+  flex: 1;
+  font-family: 'Geologica';
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  line-height: 1.2;
+  color: var(--c-text);
+}
+.acc-item__icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(187,168,212,0.6);
+  position: relative;
+  flex-shrink: 0;
+  transition: background .3s var(--ease), transform .3s var(--ease);
+}
+.acc-item__icon::before,
+.acc-item__icon::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  left: 50%; top: 50%;
+  border-radius: 2px;
+}
+.acc-item__icon::before { width: 14px; height: 2px; transform: translate(-50%, -50%); }
+.acc-item__icon::after  { width: 2px; height: 14px; transform: translate(-50%, -50%); transition: transform .3s var(--ease); }
+.acc-item[open] > summary .acc-item__icon {
+  background: linear-gradient(135deg, #ff4d97 0%, #c93dd6 100%);
+}
+.acc-item[open] > summary .acc-item__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+.acc-item__a {
+  padding: 0 28px 24px 80px;
+  color: var(--c-text-mute);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  max-width: 700px;
+}
+
+/* JS-animated accordion (overrides default <details> behavior) */
+.acc-item.is-anim .acc-item__a-wrap {
+  overflow: hidden;
+  transition: height .35s var(--ease);
+}
+
+@media (max-width: 900px) {
+  .faq { grid-template-columns: 1fr; }
+  .acc-item__a { padding-left: 28px; }
+  .acc-item > summary { padding: 18px 20px; gap: 12px; }
+  .acc-item__no { display: none; }
+  .acc-item__a { padding: 0 20px 18px; }
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.section--final { padding-bottom: clamp(60px, 7vw, 100px); }
+.final {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(60% 60% at 50% 0%, rgba(255,77,151,0.4) 0%, transparent 60%),
+    rgba(255,255,255,0.04);
+  border: 1px solid var(--c-line-strong);
+  padding: clamp(56px, 7vw, 100px) clamp(40px, 5vw, 60px);
+  text-align: center;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.final__copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 540px;
+}
+.final__cat {
+  position: absolute;
+  bottom: 0;
+  width: clamp(180px, 22vw, 320px);
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 -10px 40px rgba(255,77,151,0.3));
+  animation: float 6s ease-in-out infinite;
+}
+.final__cat--left { left: 0; transform: scaleX(-1); }
+.final__cat--right { right: 0; animation-delay: -3s; }
+
+@media (max-width: 740px) {
+  .final { padding: clamp(40px, 7vw, 64px) 24px; min-height: 420px; }
+  .final__cat { width: 38vw; opacity: 0.45; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { padding: clamp(40px, 5vw, 60px) 0 0; position: relative; overflow: hidden; }
+.footer__inner { display: flex; flex-direction: column; gap: clamp(32px, 4vw, 60px); }
+.footer__row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 24px;
+}
+.footer__col { display: flex; flex-direction: column; gap: 8px; }
+.footer__col--center { align-items: center; }
+.footer__col--right { align-items: flex-end; }
+.footer__link { color: var(--c-text); transition: color .2s ease; }
+.footer__link:hover { color: var(--c-pink); }
+.footer__small { color: var(--c-text); font-size: 14px; }
+
+.socials { display: flex; gap: 10px; }
+.social {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff4d97 0%, #c93dd6 100%);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.social:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,77,151,0.4); }
+
+.footer__sk {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--c-line-strong);
+  padding: 8px 14px;
+  border-radius: 12px;
+  transition: background .2s ease;
+}
+.footer__sk:hover { background: rgba(255,255,255,0.08); }
+.footer__sk-text { font-weight: 500; color: var(--c-text-mute); }
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  font-size: 12px;
+  color: var(--c-text-mute);
+  letter-spacing: 0.03em;
+}
+.footer__legal a { transition: color .2s ease; }
+.footer__legal a:hover { color: var(--c-text); }
+
+.footer__wordmark {
+  margin: clamp(20px, 3vw, 40px) 0 0;
+  font-family: 'Geologica';
+  font-weight: 900;
+  font-size: clamp(60px, 18vw, 280px);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  text-align: center;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.footer__copy {
+  text-align: center;
+  color: var(--c-text-mute);
+  font-size: 14px;
+  padding-bottom: 24px;
+}
+
+@media (max-width: 740px) {
+  .footer__row { grid-template-columns: 1fr; }
+  .footer__col, .footer__col--center, .footer__col--right { align-items: flex-start; }
+}
+
+/* ============================================================
+   RESPONSIVE: header
+   ============================================================ */
+@media (max-width: 1020px) {
+  .nav { display: none; }
+  .burger { display: inline-flex; }
+}
+@media (max-width: 520px) {
+  .header__actions .btn { display: none; }
+}
+
+/* a11y */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ────────── HEADER ────────── -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#top" class="logo" aria-label="Блоксели">
+      <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M4 4h10v10H4zM18 4h10v10H18zM4 18h10v10H4zM18 22a6 6 0 1 0 6 6 6 6 0 0 0-6-6z" fill="url(#lg)"/>
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FF4D97"/><stop offset="1" stop-color="#C93DD6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="logo__text">Блоксели</span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#whats-inside">Что внутри</a>
+      <a href="#why">Зачем</a>
+      <a href="#sets">Наборы</a>
+      <a href="#presale">Пресейл</a>
+      <a href="#audience">Для кого</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="btn btn--primary btn--sm" data-preorder>Оформить предзаказ</button>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <div class="mobile-menu__panel">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+      <a href="#whats-inside">Что внутри</a>
+      <a href="#why">Зачем</a>
+      <a href="#sets">Наборы</a>
+      <a href="#presale">Пресейл</a>
+      <a href="#audience">Для кого</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="btn btn--primary mobile-menu__cta" data-preorder>Оформить предзаказ</button>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ────────── HERO ────────── -->
+<section class="section hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <div class="pill pill--accent">
+        <span class="dot"></span>
+        Пресейл · Ограниченный тираж
+      </div>
+      <h1 class="hero__title">Лутай&nbsp;кота</h1>
+      <p class="hero__lead">
+        Плюшевый кот Блоксель + детская лицензия на платформу
+        в&nbsp;подарок на 3 месяца. Идеальный набор для юного создателя
+        3D-миров — без сладкой айтишной обёртки.
+      </p>
+      <div class="hero__cta">
+        <button class="btn btn--primary" data-preorder>Купить «мягкий комплект»</button>
+        <a class="btn btn--ghost" href="#whats-inside">Что внутри →</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__glow hero__glow--1"></div>
+      <div class="hero__glow hero__glow--2"></div>
+      <div class="diamond diamond--hero-1"></div>
+      <div class="diamond diamond--hero-2"></div>
+      <div class="cats">
+        <img class="cat cat--1" src="assets/cat-blue.png" alt="" />
+        <img class="cat cat--2" src="assets/cat-black.png" alt="" />
+        <img class="cat cat--3" src="assets/cat-white.png" alt="" />
+        <img class="cat cat--4" src="assets/cat-pink.png" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── WHAT'S INSIDE ────────── -->
+<section class="section" id="whats-inside">
+  <div class="container">
+    <header class="section-head">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>01 / Что внутри</div>
+        <h2 class="h-display">Всё, что ты<br/>получаешь вместе<br/>с&nbsp;предзаказом</h2>
+      </div>
+      <p class="section-head__lead">
+        Приятные бонусы и немного эксклюзива «для своих».
+        Каждый элемент — повод гордиться, что ты залутал кота
+        одним из первых.
+      </p>
+    </header>
+
+    <div class="inside-grid">
+      <article class="card card--featured card--inside-1">
+        <span class="badge badge--pink">01</span>
+        <h3 class="card__title">Плюшевый кот Блоксель</h3>
+        <p class="card__lead">Эмоциональный подарок и физический символ платформы. Мягкий, тёплый, идеально вписывается в&nbsp;объятия — и&nbsp;в&nbsp;кадр.</p>
+        <img class="card__img card__img--inside-1" src="assets/cat-pink.png" alt="" />
+      </article>
+
+      <article class="card card--inside-2">
+        <span class="badge badge--violet">02</span>
+        <h3 class="card__title">Платформа Блоксели</h3>
+        <p class="card__lead">Доступ к творчеству, обучению и&nbsp;созданию 3D-игр. От первой сцены — к&nbsp;собственному миру.</p>
+        <img class="card__img card__img--inside-2" src="assets/platform.png" alt="" />
+      </article>
+
+      <article class="card card--inside-3">
+        <span class="badge badge--pink">03</span>
+        <h3 class="card__title">«Залутал кота»</h3>
+        <p class="card__lead">Особая отметка в&nbsp;профиле на&nbsp;платформе. Видна всем — носи как медаль раннего саппортера.</p>
+        <img class="card__img card__img--inside-3" src="assets/cat-stamp.png" alt="" />
+      </article>
+
+      <article class="card card--wide card--inside-4">
+        <div class="card__body">
+          <span class="badge badge--violet">04</span>
+          <h3 class="card__title">Тайный облик персонажа</h3>
+          <p class="card__lead">Уникальный секретный скин этим летом — только у&nbsp;тех, кто оформит предзаказ. Откроется автоматически в&nbsp;твоём профиле.</p>
+        </div>
+        <img class="card__img card__img--inside-4" src="assets/cat-secret.png" alt="" />
+      </article>
+
+      <article class="card card--wide card--bonus card--inside-5">
+        <div class="card__body">
+          <span class="badge badge--pink">бонус</span>
+          <h3 class="card__title">−35% на весь набор</h3>
+          <p class="card__lead">Цена пресейла действует до&nbsp;конца мая.<br/>Дальше — только полная стоимость.</p>
+          <button class="btn btn--primary btn--inside" data-preorder>Забрать со скидкой</button>
+        </div>
+        <img class="card__img card__img--inside-5" src="assets/cats-bonus.png" alt="" />
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── WHY ────────── -->
+<section class="section" id="why">
+  <div class="container">
+    <header class="section-head">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>02 / Почему важно</div>
+        <h2 class="h-display">Подарок<br/>становится<br/>первым&nbsp;шагом в&nbsp;IT</h2>
+      </div>
+      <p class="section-head__lead">
+        Котик дарит эмоцию и&nbsp;становится физическим символом
+        «Блоксели», а&nbsp;лицензия внутри комплекта превращает
+        игрушку в&nbsp;первый шаг к&nbsp;полезному творчеству.
+      </p>
+      <div class="diamond diamond--why" aria-hidden="true"></div>
+    </header>
+
+    <div class="why-grid">
+      <div class="why-cell">
+        <div class="icon-tile" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.65-7 10-7 10z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-cell__no">01 — Эмоции</div>
+        <h4 class="why-cell__title">Полезный<br/>подарок</h4>
+        <p class="why-cell__lead">Радость от&nbsp;игрушки соединяется с&nbsp;обучением. Ребёнок улыбается и&nbsp;учится одновременно.</p>
+      </div>
+      <div class="why-cell">
+        <div class="icon-tile" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3l9 5v8l-9 5-9-5V8l9-5zM3 8l9 5 9-5M12 13v9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-cell__no">02 — Творчество</div>
+        <h4 class="why-cell__title">3D-творчество</h4>
+        <p class="why-cell__lead">Ребёнок собирает собственные миры и&nbsp;постепенно осваивает основы геймдизайна.</p>
+      </div>
+      <div class="why-cell">
+        <div class="icon-tile" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6M14 4l-4 16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <div class="why-cell__no">03 — Логика</div>
+        <h4 class="why-cell__title">Основы<br/>программирования</h4>
+        <p class="why-cell__lead">Первые шаги в&nbsp;логике и&nbsp;цифровом мышлении — через игру, а&nbsp;не через учебник.</p>
+      </div>
+      <div class="why-cell">
+        <div class="icon-tile" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M14 7h7v7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <div class="why-cell__no">04 — Будущее</div>
+        <h4 class="why-cell__title">Навыки<br/>будущего</h4>
+        <p class="why-cell__lead">Развивает логику, фантазию и&nbsp;пространственное мышление — то, что пригодится всегда.</p>
+      </div>
+    </div>
+
+    <div class="why-foot">
+      <p class="why-foot__title">Подарок становится первым<br/>шагом в&nbsp;IT — и&nbsp;в&nbsp;карьере,<br/>о&nbsp;которой ребёнок ещё не&nbsp;знает.</p>
+      <div class="why-foot__cta">
+        <button class="btn btn--primary" data-preorder>Оформить предзаказ</button>
+        <button class="btn btn--ghost" data-action="choose-color">Выбрать&nbsp;размер</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── SETS ────────── -->
+<section class="section" id="sets">
+  <div class="container">
+    <div class="diamond diamond--sets-1" aria-hidden="true"></div>
+    <div class="diamond diamond--sets-2" aria-hidden="true"></div>
+
+    <header class="section-head">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>03 / Выберите набор</div>
+        <h2 class="h-display">Котик + лицензия<br/>«Блоксели»</h2>
+      </div>
+      <p class="section-head__lead">
+        Два варианта на&nbsp;выбор: кастомный — собирается под
+        заказ в&nbsp;любом цвете, и&nbsp;фирменный — компактный
+        розово-фиолетовый в&nbsp;классике.
+      </p>
+    </header>
+
+    <div class="sets-grid">
+      <article class="set-card set-card--featured">
+        <div class="set-card__top">
+          <span class="pill pill--solid">Кастомный · под заказ</span>
+          <h3 class="set-card__title">Большой котик<br/>25&nbsp;см</h3>
+          <p class="set-card__lead">Большой «Блоксель» изготавливается под заказ — можно выбрать любой цвет под характер ребёнка.</p>
+        </div>
+        <div class="set-card__media set-card__media--big">
+          <img src="assets/cats.png" alt="" />
+        </div>
+        <ul class="set-card__list">
+          <li>Высота 25&nbsp;см · любой цвет на&nbsp;выбор</li>
+          <li>Индивидуальное изготовление</li>
+          <li>Лицензия «Блоксели» на&nbsp;3&nbsp;месяца</li>
+          <li>Бейджик и&nbsp;секретный скин</li>
+        </ul>
+        <div class="set-card__foot">
+          <div class="price">
+            <span class="price__old">6&nbsp;749&nbsp;₽</span>
+            <span class="price__new">4&nbsp;999&nbsp;₽</span>
+          </div>
+          <button class="btn btn--primary" data-preorder>Купить</button>
+        </div>
+      </article>
+
+      <article class="set-card">
+        <div class="set-card__top">
+          <span class="pill pill--outline">Фирменный · в&nbsp;наличии</span>
+          <h3 class="set-card__title">Классический<br/>15&nbsp;см</h3>
+          <p class="set-card__lead">Компактный котик в&nbsp;классическом стиле «Блоксели». Помещается в&nbsp;рюкзак, идеален для дороги.</p>
+        </div>
+        <div class="set-card__media set-card__media--small">
+          <img src="assets/cat-pink.png" alt="" />
+        </div>
+        <ul class="set-card__list">
+          <li>Высота 15&nbsp;см · розово-фиолетовый</li>
+          <li>Компактный формат</li>
+          <li>Лицензия «Блоксели» на&nbsp;1&nbsp;месяц</li>
+          <li>Бейджик и&nbsp;секретный скин</li>
+        </ul>
+        <div class="set-card__foot">
+          <div class="price">
+            <span class="price__old">1&nbsp;619&nbsp;₽</span>
+            <span class="price__new">1&nbsp;199&nbsp;₽</span>
+          </div>
+          <button class="btn btn--ghost" data-preorder>Купить</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── PRESALE / COUNTDOWN ────────── -->
+<section class="section section--presale" id="presale">
+  <div class="container">
+    <div class="presale">
+      <div class="presale__copy">
+        <div class="eyebrow"><span class="rule"></span>04 / Пресейл уже открыт</div>
+        <h2 class="h-display">Первые<br/>получают&nbsp;больше</h2>
+        <p class="section-head__lead">
+          Оформите предзаказ сейчас: комплект продаётся
+          со&nbsp;скидкой&nbsp;35%, а&nbsp;первые владельцы получают
+          особый статус и&nbsp;цифровые бонусы на&nbsp;платформе.
+        </p>
+        <button class="btn btn--primary" data-preorder>Забрать набор со&nbsp;скидкой →</button>
+      </div>
+
+      <div class="presale__panel">
+        <div class="presale__panel-head">До конца пресейла</div>
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div class="countdown__cell"><div class="countdown__num" data-cd="d">14</div><div class="countdown__lbl">Дней</div></div>
+          <div class="countdown__cell"><div class="countdown__num" data-cd="h">07</div><div class="countdown__lbl">Часов</div></div>
+          <div class="countdown__cell"><div class="countdown__num" data-cd="m">42</div><div class="countdown__lbl">Минут</div></div>
+          <div class="countdown__cell"><div class="countdown__num" data-cd="s">19</div><div class="countdown__lbl">Секунд</div></div>
+        </div>
+        <div class="progress">
+          <div class="progress__row">
+            <span class="progress__label">Слотов по скидке осталось</span>
+            <span class="progress__value">60%</span>
+          </div>
+          <div class="progress__track"><div class="progress__fill" style="width:60%"><span class="progress__head"></span></div></div>
+          <div class="progress__note">График заполнения предзаказов · обновляется каждые 5&nbsp;минут</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── AUDIENCE ────────── -->
+<section class="section" id="audience">
+  <div class="container">
+    <div class="diamond diamond--aud-1" aria-hidden="true"></div>
+    <div class="diamond diamond--aud-2" aria-hidden="true"></div>
+
+    <header class="section-head">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>05 / Для кого набор</div>
+        <h2 class="h-display">Один комплект<br/>— три истории</h2>
+      </div>
+      <p class="section-head__lead">
+        «Лутай кота» работает на&nbsp;трёх уровнях одновременно:
+        эмоция для ребёнка, спокойствие для родителя и&nbsp;статус
+        для фаната платформы.
+      </p>
+    </header>
+
+    <div class="audience-grid">
+      <article class="aud-card">
+        <div class="aud-card__tag">для детей · 6+</div>
+        <h3 class="aud-card__title">Эмоция<br/>и&nbsp;старт</h3>
+        <p class="aud-card__lead">Котик создаёт эмоцию, а&nbsp;лицензия даёт возможность сразу начать творить в&nbsp;«Блоксели».</p>
+        <div class="aud-card__no">01</div>
+      </article>
+      <article class="aud-card">
+        <div class="aud-card__tag">для родителей</div>
+        <h3 class="aud-card__title">Польза<br/>без вины</h3>
+        <p class="aud-card__lead">Подарок совмещает радость, игру и&nbsp;полезный цифровой навык — без чувства «ещё одна плюшка».</p>
+        <div class="aud-card__no">02</div>
+      </article>
+      <article class="aud-card">
+        <div class="aud-card__tag">для фанатов</div>
+        <h3 class="aud-card__title">Статус<br/>первого</h3>
+        <p class="aud-card__lead">Ранние владельцы получают статус, бейджик и&nbsp;эксклюзивный скин — заметный знак «я был первым».</p>
+        <div class="aud-card__no">03</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FAQ ────────── -->
+<section class="section" id="faq">
+  <div class="container faq">
+    <header class="faq__head">
+      <div class="eyebrow"><span class="rule"></span>06 / Вопросы и&nbsp;ответы</div>
+      <h2 class="h-display">Часто<br/>спрашивают</h2>
+      <p class="section-head__lead">Если не&nbsp;нашли свой вопрос — напишите в&nbsp;поддержку, отвечаем в&nbsp;течение пары часов.</p>
+    </header>
+
+    <div class="accordion" id="accordion">
+      <details class="acc-item" open>
+        <summary>
+          <span class="acc-item__no">— 01</span>
+          <span class="acc-item__q">Это игрушка или комплект с&nbsp;лицензией?</span>
+          <span class="acc-item__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-item__a">Это полноценный комплект: мягкий котик + лицензия «Блоксели» + бонусы для ранних покупателей.</div>
+      </details>
+      <details class="acc-item">
+        <summary>
+          <span class="acc-item__no">— 02</span>
+          <span class="acc-item__q">Почему лицензия так важна?</span>
+          <span class="acc-item__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-item__a">Мягкий котик помогает привести ребёнка в&nbsp;мир программирования. Вместе с&nbsp;игрушкой он получает доступ к&nbsp;платформе, где сможет создавать свои 3D-проекты, игры и&nbsp;постепенно осваивать основы кода. А&nbsp;главное — котик из&nbsp;реального подарка становится персонажем внутри платформы: ребёнок играет за&nbsp;того самого героя, которого держит в&nbsp;руках.</div>
+      </details>
+      <details class="acc-item">
+        <summary>
+          <span class="acc-item__no">— 03</span>
+          <span class="acc-item__q">Что значит пресейл?</span>
+          <span class="acc-item__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-item__a">Пресейл — это предзаказ. Сейчас котики находятся в&nbsp;производстве, поэтому комплект можно оформить заранее со&nbsp;скидкой 35%.</div>
+      </details>
+      <details class="acc-item">
+        <summary>
+          <span class="acc-item__no">— 04</span>
+          <span class="acc-item__q">Можно ли выбрать цвет?</span>
+          <span class="acc-item__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-item__a">Для большого котика 25&nbsp;см — да, он изготавливается под заказ, поэтому цвет можно выбрать. Маленький котик 15&nbsp;см выпускается в&nbsp;фирменном розово-фиолетовом цвете.</div>
+      </details>
+      <details class="acc-item">
+        <summary>
+          <span class="acc-item__no">— 05</span>
+          <span class="acc-item__q">Когда будет доставка?</span>
+          <span class="acc-item__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-item__a">Лицензию вы получите сразу после оформления заказа. Мягкая игрушка будет доставлена ориентировочно через 1,5&nbsp;месяца.</div>
+      </details>
+      <details class="acc-item">
+        <summary>
+          <span class="acc-item__no">— 06</span>
+          <span class="acc-item__q">Сколько будет стоить доставка?</span>
+          <span class="acc-item__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="acc-item__a">Добавьте котика в&nbsp;корзину и&nbsp;укажите свой адрес — система покажет доступные варианты доставки и&nbsp;их стоимость.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FINAL CTA ────────── -->
+<section class="section section--final">
+  <div class="container">
+    <div class="final">
+      <img class="final__cat final__cat--left" src="assets/cat-white.png" alt="" />
+      <img class="final__cat final__cat--right" src="assets/cat-blue.png" alt="" />
+      <div class="final__copy">
+        <div class="pill pill--accent"><span class="dot"></span>−35% · до конца мая</div>
+        <h2 class="h-display">Залутай кота —<br/>открой Блоксели</h2>
+        <p class="section-head__lead">Ограниченный тираж, лицензия в&nbsp;подарок и&nbsp;эксклюзивные цифровые бонусы. Войди в&nbsp;число первых саппортеров платформы.</p>
+        <button class="btn btn--primary" data-preorder>Оформить предзаказ</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ────────── FOOTER ────────── -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__row">
+      <div class="footer__col">
+        <a class="footer__link" href="#">Для школ и&nbsp;организаций</a>
+        <a class="footer__link" href="#">Для родителей и&nbsp;учеников</a>
+      </div>
+      <div class="footer__col footer__col--center">
+        <div class="footer__small">Следите за&nbsp;нами</div>
+        <div class="socials">
+          <a class="social" href="#" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" width="20" height="17" aria-hidden="true"><path fill="currentColor" d="M.93 6.92L18.67.08c.82-.3 1.54.2 1.27 1.45L17.93 15.76c-.22 1-.82 1.25-1.66.77l-4.6-3.39-2.22 2.14c-.24.24-.45.45-.93.45l.33-4.68 8.52-7.7c.37-.33-.08-.51-.57-.19L5.26 9.8.72 8.38c-.99-.31-1.01-.99.21-1.46z"/></svg>
+          </a>
+          <a class="social" href="#" aria-label="VK">
+            <svg viewBox="0 0 24 16" width="22" height="14" aria-hidden="true"><path fill="currentColor" d="M12.9 14.5C5.7 14.5 1.6 9.6 1.4 1.5h3.6c.1 6 2.7 8.5 4.8 9V1.5h3.4v5.2c2.1-.2 4.3-2.6 5-5.2h3.4c-.6 3.2-3 5.6-4.7 6.6 1.7.8 4.4 2.9 5.4 6.7H19c-.8-2.5-2.8-4.4-5.4-4.7v4.7h-.7z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__col footer__col--right">
+        <a href="https://skillbox.ru" class="footer__sk" aria-label="Skillbox Участник">
+          <span>SK</span>
+          <span class="footer__sk-text">Участник</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="footer__legal" aria-label="Правовая информация">
+      <a href="#">Политика обработки персональных данных</a>
+      <a href="#">Пользовательское соглашение</a>
+      <a href="#">Согласие на обработку персональных данных</a>
+      <a href="#">Лицензионное соглашение</a>
+      <a href="#">Оферта</a>
+      <a href="#">Информация о&nbsp;ПО</a>
+    </nav>
+
+    <div class="footer__wordmark" aria-hidden="true">
+      <span>БЛОКСЕЛИ</span>
+    </div>
+    <div class="footer__copy">2026©</div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   BLOXELS — Landing JS
+   ============================================================ */
+
+// ─── Configurable presale end date (UTC+3 / Moscow) ─────────
+// Change this to update countdown:
+const PRESALE_END = new Date('2026-05-31T23:59:59+03:00');
+
+// ─── Preorder event ─────────────────────────────────────────
+// All "Оформить предзаказ" / "Купить" buttons fire this single event.
+// Real preorder widget integration can listen on:
+//   document.addEventListener('bloxels:preorder', e => {...})
+function firePreorder(source) {
+  const detail = { source: source || 'unknown', ts: Date.now() };
+  document.dispatchEvent(new CustomEvent('bloxels:preorder', { detail }));
+  // Простая заглушка для разработки:
+  window.alert('Оформление предзаказа');
+}
+
+// "Выбрать размер / окрас" — отдельное событие-заглушка
+function fireColorPicker(source) {
+  document.dispatchEvent(new CustomEvent('bloxels:choose-color', {
+    detail: { source, ts: Date.now() },
+  }));
+  window.alert('Выбор окраса / размера');
+}
+
+document.addEventListener('click', (e) => {
+  const preorder = e.target.closest('[data-preorder]');
+  if (preorder) {
+    e.preventDefault();
+    firePreorder(preorder.textContent.trim().slice(0, 40));
+    return;
+  }
+  const color = e.target.closest('[data-action="choose-color"]');
+  if (color) {
+    e.preventDefault();
+    fireColorPicker(color.textContent.trim().slice(0, 40));
+  }
+});
+
+// ─── Mobile menu ────────────────────────────────────────────
+(() => {
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  const closeBtn = document.getElementById('mobileMenuClose');
+  if (!burger || !menu) return;
+
+  const open = () => {
+    menu.hidden = false;
+    requestAnimationFrame(() => menu.classList.add('is-open'));
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    menu.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    setTimeout(() => { menu.hidden = true; }, 350);
+  };
+  burger.addEventListener('click', open);
+  closeBtn?.addEventListener('click', close);
+  menu.addEventListener('click', (e) => {
+    if (e.target === menu) close();
+    if (e.target.closest('a')) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+  });
+})();
+
+// ─── Accordion (one open at a time, smooth height) ─────────
+(() => {
+  const root = document.getElementById('accordion');
+  if (!root) return;
+  const items = [...root.querySelectorAll('.acc-item')];
+
+  // Wrap content in animatable container
+  items.forEach((item) => {
+    const a = item.querySelector('.acc-item__a');
+    if (!a) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'acc-item__a-wrap';
+    a.parentNode.insertBefore(wrap, a);
+    wrap.appendChild(a);
+    item.classList.add('is-anim');
+
+    // initial state matches the [open] attribute
+    if (!item.hasAttribute('open')) wrap.style.height = '0px';
+    else wrap.style.height = a.offsetHeight + 'px';
+  });
+
+  const animateTo = (item, isOpen) => {
+    const wrap = item.querySelector('.acc-item__a-wrap');
+    const inner = item.querySelector('.acc-item__a');
+    if (!wrap || !inner) return;
+    if (isOpen) {
+      item.setAttribute('open', '');
+      wrap.style.height = inner.offsetHeight + 'px';
+      // after transition, allow auto height (so resize keeps working)
+      wrap.addEventListener('transitionend', function once() {
+        if (item.hasAttribute('open')) wrap.style.height = 'auto';
+        wrap.removeEventListener('transitionend', once);
+      });
+    } else {
+      // need explicit pixel height before transition to 0
+      wrap.style.height = wrap.offsetHeight + 'px';
+      // force reflow
+      // eslint-disable-next-line no-unused-expressions
+      wrap.offsetHeight;
+      wrap.style.height = '0px';
+      wrap.addEventListener('transitionend', function once() {
+        item.removeAttribute('open');
+        wrap.removeEventListener('transitionend', once);
+      });
+    }
+  };
+
+  // Intercept native <details> toggle: enforce single-open + smooth
+  items.forEach((item) => {
+    const summary = item.querySelector('summary');
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      const willOpen = !item.hasAttribute('open');
+      if (willOpen) {
+        items.forEach((other) => {
+          if (other !== item && other.hasAttribute('open')) animateTo(other, false);
+        });
+        animateTo(item, true);
+      } else {
+        animateTo(item, false);
+      }
+    });
+  });
+
+  // re-measure heights of open items on resize (height: auto → static)
+  window.addEventListener('resize', () => {
+    items.forEach((item) => {
+      if (item.hasAttribute('open')) {
+        const wrap = item.querySelector('.acc-item__a-wrap');
+        if (wrap) wrap.style.height = 'auto';
+      }
+    });
+  });
+})();
+
+// ─── Countdown ──────────────────────────────────────────────
+(() => {
+  const root = document.getElementById('countdown');
+  if (!root) return;
+  const cells = {
+    d: root.querySelector('[data-cd="d"]'),
+    h: root.querySelector('[data-cd="h"]'),
+    m: root.querySelector('[data-cd="m"]'),
+    s: root.querySelector('[data-cd="s"]'),
+  };
+  const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
+
+  const tick = () => {
+    let diff = Math.max(0, PRESALE_END.getTime() - Date.now());
+    const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+    const h = Math.floor(diff / 3600000);  diff -= h * 3600000;
+    const m = Math.floor(diff / 60000);    diff -= m * 60000;
+    const s = Math.floor(diff / 1000);
+    if (cells.d) cells.d.textContent = pad(d);
+    if (cells.h) cells.h.textContent = pad(h);
+    if (cells.m) cells.m.textContent = pad(m);
+    if (cells.s) cells.s.textContent = pad(s);
+  };
+
+  tick();
+  setInterval(tick, 1000);
+})();
+
+</script>
+</body>
+</html>
