@@ -2,6 +2,83 @@
    BLOXELS — Landing JS
    ============================================================ */
 
+// ─── Russian typography: keep short prepositions with next word ──
+const TYPOGRAPHY_SKIP_SELECTOR = [
+  'script',
+  'style',
+  'noscript',
+  'textarea',
+  'input',
+  'select',
+  'option',
+  'pre',
+  'code',
+  'kbd',
+  'samp',
+  '[data-typography-skip]',
+].join(',');
+
+const HANGING_WORDS = [
+  'из-за',
+  'из-под',
+  'без',
+  'для',
+  'до',
+  'за',
+  'из',
+  'ко',
+  'на',
+  'над',
+  'об',
+  'обо',
+  'от',
+  'по',
+  'под',
+  'при',
+  'про',
+  'со',
+  'во',
+  'а',
+  'в',
+  'и',
+  'к',
+  'о',
+  'с',
+  'у',
+].join('|');
+
+const HANGING_WORD_RE = new RegExp(
+  `(^|[\\s([{"'«„])(${HANGING_WORDS})([\\s\\u00A0]+)(?=[^\\s.,!?;:)}\\]»”"'])`,
+  'giu',
+);
+
+function fixHangingPrepositions(root = document.body) {
+  if (!root) return;
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      if (node.parentElement?.closest(TYPOGRAPHY_SKIP_SELECTOR)) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+
+  const nodes = [];
+  let node = walker.nextNode();
+  while (node) {
+    nodes.push(node);
+    node = walker.nextNode();
+  }
+
+  nodes.forEach((textNode) => {
+    textNode.nodeValue = textNode.nodeValue.replace(HANGING_WORD_RE, '$1$2\u00A0');
+  });
+}
+
+fixHangingPrepositions();
+
 // ─── Configurable presale end date (UTC+3 / Moscow) ─────────
 // Change this to update countdown:
 const PRESALE_END = new Date('2026-05-31T23:59:59+03:00');
