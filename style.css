@@ -87,6 +87,13 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0;
   text-wrap: pretty;
 }
+.text-gradient {
+  color: transparent;
+  background: linear-gradient(90deg, #e15fab 0%, #8966d7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .eyebrow {
   display: inline-flex;
   align-items: center;
