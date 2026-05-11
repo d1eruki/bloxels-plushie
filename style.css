@@ -88,6 +88,7 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0 auto;
   padding: 0 var(--pad-x);
   position: relative;
+  isolation: isolate;
 }
 
 /* ============================================================
@@ -470,6 +471,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .diamond {
   position: absolute;
+  z-index: -1;
   border-radius: 14px;
   background: linear-gradient(135deg, #ff7ab8 0%, #c93dd6 100%);
   box-shadow: 0 0 40px rgba(201,61,214,0.55);
