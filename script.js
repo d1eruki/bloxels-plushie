@@ -1,3 +1,4 @@
+
 /* ============================================================
    BLOXELS — Landing JS
    ============================================================ */
@@ -48,8 +49,8 @@ const HANGING_WORDS = [
 ].join('|');
 
 const HANGING_WORD_RE = new RegExp(
-  `(^|[\\s([{"'«„])(${HANGING_WORDS})([\\s\\u00A0]+)(?=[^\\s.,!?;:)}\\]»”"'])`,
-  'giu',
+    `(^|[\\s([{"'«„])(${HANGING_WORDS})([\\s\\u00A0]+)(?=[^\\s.,!?;:)}\\]»”"'])`,
+    'giu',
 );
 
 function fixHangingPrepositions(root = document.body) {
@@ -90,16 +91,7 @@ const PRESALE_END = new Date('2026-05-31T23:59:59+03:00');
 function firePreorder(source) {
   const detail = { source: source || 'unknown', ts: Date.now() };
   document.dispatchEvent(new CustomEvent('bloxels:preorder', { detail }));
-  // Простая заглушка для разработки:
-  window.alert('Оформление предзаказа');
-}
-
-// "Выбрать размер / окрас" — отдельное событие-заглушка
-function fireColorPicker(source) {
-  document.dispatchEvent(new CustomEvent('bloxels:choose-color', {
-    detail: { source, ts: Date.now() },
-  }));
-  window.alert('Выбор окраса / размера');
+  document.getElementById('sets')?.scrollIntoView({ behavior: 'smooth' });
 }
 
 document.addEventListener('click', (e) => {
@@ -107,12 +99,6 @@ document.addEventListener('click', (e) => {
   if (preorder) {
     e.preventDefault();
     firePreorder(preorder.textContent.trim().slice(0, 40));
-    return;
-  }
-  const color = e.target.closest('[data-action="choose-color"]');
-  if (color) {
-    e.preventDefault();
-    fireColorPicker(color.textContent.trim().slice(0, 40));
   }
 });
 
@@ -247,4 +233,69 @@ document.addEventListener('click', (e) => {
 
   tick();
   setInterval(tick, 1000);
+})();
+
+// ─── Color Picker Modal ─────────────────────────────────────
+(() => {
+  const modal = document.getElementById('colorModal');
+  const closeBtn = document.getElementById('colorModalClose');
+  const backdrop = modal?.querySelector('.color-modal__backdrop');
+  const orderBtn = document.getElementById('colorModalOrder');
+  const preview = document.getElementById('colorPreview');
+  const hexEl = document.getElementById('colorHex');
+  const rgbEl = document.getElementById('colorRgb');
+
+  if (!modal) return;
+
+  let selectedColor = { hex: '#FF4BC2', rgb: { r: 255, g: 75, b: 194 } };
+  let colorPicker = null;
+
+  const updateUI = () => {
+    const { hex, rgb } = selectedColor;
+    if (preview) preview.style.background = hex;
+    if (hexEl) hexEl.textContent = hex.toUpperCase();
+    if (rgbEl) rgbEl.textContent = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+  };
+
+  const open = () => {
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    document.body.style.overflow = 'hidden';
+    if (!colorPicker && typeof iro !== 'undefined') {
+      colorPicker = new iro.ColorPicker('#colorWheel', {
+        width: 220,
+        color: selectedColor.hex,
+        layout: [
+          { component: iro.ui.Wheel },
+          { component: iro.ui.Slider, options: { sliderType: 'value' } },
+        ],
+      });
+      colorPicker.on('color:change', (color) => {
+        selectedColor = { hex: color.hexString, rgb: color.rgb };
+        updateUI();
+      });
+    }
+    updateUI();
+  };
+
+  const close = () => {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(() => { modal.hidden = true; }, 350);
+  };
+
+  closeBtn?.addEventListener('click', close);
+  backdrop?.addEventListener('click', close);
+  orderBtn?.addEventListener('click', () => {
+    window.alert(`Выбранный цвет: ${selectedColor.hex}`);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-action="pick-color"]')) {
+      e.preventDefault();
+      open();
+    }
+  });
 })();
