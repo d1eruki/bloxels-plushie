@@ -27,7 +27,7 @@
   --header-h: clamp(64px, 6vw, 80px);
 
   /* fluid type scale */
-  --fs-display: clamp(40px, 6vw + 4px, 64px);
+  --fs-display: clamp(36px, 6vw + 4px, 64px);
   --fs-hero:    clamp(56px, 12.5vw, 180px);
   --fs-h3:      clamp(28px, 3vw, 40px);
   --fs-h4:      clamp(20px, 1.6vw, 22px);
@@ -104,6 +104,8 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0;
   text-wrap: pretty;
   overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
 }
 .text-gradient {
   color: transparent;
@@ -409,6 +411,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 900px) {
   .section-head { grid-template-columns: 1fr; align-items: start; }
+  .section-head > * { min-width: 0; max-width: 100%; }
 }
 
 /* ============================================================
@@ -606,11 +609,11 @@ button { font-family: inherit; cursor: pointer; }
   max-height: none;
 }
 
-.card__img--inside-1 { right: -52px; bottom: -30px; width: 56%; }
-.card__img--inside-2 { right: -46px; bottom: -42px; width: 60%; mix-blend-mode: lighten; }
-.card__img--inside-3 { right: -52px; bottom: -36px; width: 60%; mix-blend-mode: lighten; }
-.card__img--inside-4 { right: -38px; bottom: -40px; width: 46%; mix-blend-mode: lighten; }
-.card__img--inside-5 { right: -56px; bottom: -48px; width: 58%; mix-blend-mode: lighten; transform: rotate(-4deg); transform-origin: center; }
+.card__img--inside-1 { right: -13%; bottom: -30px; width: 56%; }
+.card__img--inside-2 { right: -12%; bottom: -42px; width: 60%; mix-blend-mode: lighten; }
+.card__img--inside-3 { right: -13%; bottom: -36px; width: 60%; mix-blend-mode: lighten; }
+.card__img--inside-4 { right: -7%;  bottom: -40px; width: 46%; mix-blend-mode: lighten; }
+.card__img--inside-5 { right: -10%; bottom: -48px; width: 58%; mix-blend-mode: lighten; transform: rotate(-4deg); transform-origin: center; }
 
 .card--bonus { border-style: dashed; }
 .btn--inside { align-self: flex-start; margin-top: auto; position: relative; z-index: 2; }
@@ -628,7 +631,11 @@ button { font-family: inherit; cursor: pointer; }
   .card--inside-5 .card__body {
     max-width: 58%;
   }
-  .card__img--inside-4 { right: 16px; top: 20px; transform: none; width: 48%; }
+  .card__img--inside-4 { right: -7%; top: auto; bottom: -24px; transform: none; width: 48%; }
+  .card__img--inside-1 { bottom: -18px; }
+  .card__img--inside-2 { bottom: -24px; }
+  .card__img--inside-3 { bottom: -20px; }
+  .card__img--inside-5 { bottom: -28px; }
 }
 @media (max-width: 620px) {
   .inside-grid { grid-template-columns: 1fr; }
