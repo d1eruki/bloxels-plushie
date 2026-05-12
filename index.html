@@ -252,7 +252,7 @@
             <span class="price__old">6&nbsp;749&nbsp;₽</span>
             <span class="price__new">4&nbsp;999&nbsp;₽</span>
           </div>
-          <button class="btn btn--primary" data-preorder>Купить</button>
+          <button class="btn btn--primary" data-action="pick-color">Выбрать цвет</button>
         </div>
       </article>
 
@@ -440,6 +440,39 @@
 
 </main>
 
+<!-- ────────── COLOR PICKER MODAL ────────── -->
+<div class="color-modal" id="colorModal" hidden role="dialog" aria-modal="true" aria-labelledby="colorModalTitle">
+  <div class="color-modal__backdrop"></div>
+  <div class="color-modal__panel">
+    <button class="color-modal__close" id="colorModalClose" aria-label="Закрыть">
+      <span class="material-icons-round" aria-hidden="true">close</span>
+    </button>
+    <h2 class="color-modal__title" id="colorModalTitle">Выберите цвет котика</h2>
+    <div class="color-modal__body">
+      <div class="color-modal__left">
+        <div id="colorWheel"></div>
+      </div>
+      <div class="color-modal__right">
+        <div class="color-modal__preview" id="colorPreview"></div>
+        <div class="color-modal__values">
+          <div class="color-modal__val">
+            <span class="color-modal__val-label">HEX</span>
+            <span class="color-modal__val-value" id="colorHex">#FF4BC2</span>
+          </div>
+          <div class="color-modal__val">
+            <span class="color-modal__val-label">RGB</span>
+            <span class="color-modal__val-value" id="colorRgb">255, 75, 194</span>
+          </div>
+        </div>
+        <p class="color-modal__note">Выбранный цвет будет использован для индивидуального изготовления котика.</p>
+      </div>
+    </div>
+    <div class="color-modal__foot">
+      <button class="btn btn--primary color-modal__order" id="colorModalOrder">Заказать котика</button>
+    </div>
+  </div>
+</div>
+
 <!-- ────────── FOOTER ────────── -->
 <footer class="footer">
   <div class="container footer__inner">
@@ -480,6 +513,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5/dist/iro.min.js"></script>
 <script>
 /* ============================================================
    BLOXELS — Landing JS
@@ -730,6 +764,71 @@ document.addEventListener('click', (e) => {
 
   tick();
   setInterval(tick, 1000);
+})();
+
+// ─── Color Picker Modal ─────────────────────────────────────
+(() => {
+  const modal = document.getElementById('colorModal');
+  const closeBtn = document.getElementById('colorModalClose');
+  const backdrop = modal?.querySelector('.color-modal__backdrop');
+  const orderBtn = document.getElementById('colorModalOrder');
+  const preview = document.getElementById('colorPreview');
+  const hexEl = document.getElementById('colorHex');
+  const rgbEl = document.getElementById('colorRgb');
+
+  if (!modal) return;
+
+  let selectedColor = { hex: '#FF4BC2', rgb: { r: 255, g: 75, b: 194 } };
+  let colorPicker = null;
+
+  const updateUI = () => {
+    const { hex, rgb } = selectedColor;
+    if (preview) preview.style.background = hex;
+    if (hexEl) hexEl.textContent = hex.toUpperCase();
+    if (rgbEl) rgbEl.textContent = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+  };
+
+  const open = () => {
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    document.body.style.overflow = 'hidden';
+    if (!colorPicker && typeof iro !== 'undefined') {
+      colorPicker = new iro.ColorPicker('#colorWheel', {
+        width: 220,
+        color: selectedColor.hex,
+        layout: [
+          { component: iro.ui.Wheel },
+          { component: iro.ui.Slider, options: { sliderType: 'value' } },
+        ],
+      });
+      colorPicker.on('color:change', (color) => {
+        selectedColor = { hex: color.hexString, rgb: color.rgb };
+        updateUI();
+      });
+    }
+    updateUI();
+  };
+
+  const close = () => {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(() => { modal.hidden = true; }, 350);
+  };
+
+  closeBtn?.addEventListener('click', close);
+  backdrop?.addEventListener('click', close);
+  orderBtn?.addEventListener('click', () => {
+    window.alert(`Выбранный цвет: ${selectedColor.hex}`);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-action="pick-color"]')) {
+      e.preventDefault();
+      open();
+    }
+  });
 })();
 
 </script>
