@@ -21,13 +21,13 @@
   --radius-xl: 32px;
 
   --pad-x: clamp(20px, 4.5vw, 60px);
-  --section-gap: clamp(80px, 9vw, 140px);
+  --section-gap: clamp(40px, 9vw, 80px);
 
   --container-max: 1320px;
   --header-h: clamp(64px, 6vw, 80px);
 
   /* fluid type scale */
-  --fs-display: clamp(36px, 6vw + 4px, 64px);
+  --fs-display: clamp(36px, 6vw + 4px, 52px);
   --fs-hero:    clamp(56px, 12.5vw, 180px);
   --fs-h3:      clamp(28px, 3vw, 40px);
   --fs-h4:      clamp(20px, 1.6vw, 22px);
@@ -238,6 +238,26 @@ button { font-family: inherit; cursor: pointer; }
   background: rgba(255,77,151,0.12);
   border: 1px solid rgba(255,122,184,0.4);
   color: #ffb8d6;
+}
+.pill--accent-2 {
+  background: rgb(127 77 255 / 0.12);
+  border: 1px solid rgba(123,77,255,0.45);
+  color: #b37aff;
+}
+.pill--accent-3 {
+  background: rgb(77 255 175 / 0.12);
+  border: 1px solid rgba(89,255,210,0.42);
+  color: #59ffd2;
+}
+.pill--accent-4 {
+  background: rgb(77 222 255 / 0.12);
+  border: 1px solid rgba(87,223,255,0.42);
+  color: #57dfff;
+}
+.pill--accent-5 {
+  background: rgb(255 235 107 / 0.15);
+  border: 1px solid rgb(255 233 99 / 0.29);
+  color: #ffcf57;
 }
 .pill--accent .dot {
   width: 6px; height: 6px; border-radius: 50%;
@@ -715,7 +735,6 @@ button { font-family: inherit; cursor: pointer; }
 .why-foot {
   margin-top: clamp(32px, 4vw, 56px);
   padding: 24px 0;
-  border-top: 1px solid var(--c-line);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
