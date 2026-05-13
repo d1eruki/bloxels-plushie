@@ -459,6 +459,11 @@ button { font-family: inherit; cursor: pointer; }
   overflow: visible;
   margin: 0;
 }
+.hero__badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 .hero__title-accent {
   display: inline-block;
   padding-right: 0.12em;
@@ -629,7 +634,8 @@ button { font-family: inherit; cursor: pointer; }
   max-height: none;
 }
 
-.card__img--inside-1 { right: -13%; bottom: -30px; width: 56%; }
+.card__img--inside-1 { right: -7%; bottom: -30px; height: 100%;}
+.card__img--inside-who { right: 0; bottom: 0; height: 100%; }
 .card__img--inside-2 { right: -12%; bottom: -42px; width: 60%; mix-blend-mode: lighten; }
 .card__img--inside-3 { right: -13%; bottom: -36px; width: 60%; mix-blend-mode: lighten; }
 .card__img--inside-4 { right: -7%;  bottom: -40px; width: 46%; mix-blend-mode: lighten; }
@@ -1036,9 +1042,11 @@ button { font-family: inherit; cursor: pointer; }
   border: 1px solid var(--c-line-strong);
   border-radius: var(--radius-xl);
   padding: clamp(22px, 2.5vw, 32px);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto minmax(0, 1fr);
   gap: 16px;
+  align-content: stretch;
   min-height: 270px;
   backdrop-filter: blur(20px);
   overflow: hidden;
@@ -1049,18 +1057,31 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
   color: var(--c-text-mute);
 }
-.aud-card__title { font-family: 'Geologica'; font-weight: 700; font-size: var(--fs-h3); line-height: 1; letter-spacing: -0.03em; margin: 0; }
-.aud-card__lead { color: var(--c-text-mute); margin: 0; font-size: var(--fs-body); }
+.aud-card__title { grid-column: 1 / -1; font-family: 'Geologica'; font-weight: 700; font-size: var(--fs-h3); line-height: 1; letter-spacing: -0.03em; margin: 0; }
+.aud-card__lead { grid-column: 1; color: var(--c-text-mute); margin: 0; font-size: var(--fs-body); align-self: center; }
+.aud-card .card__img--inside-who {
+  position: static;
+  grid-column: 1 / -1;
+  justify-self: center;
+  align-self: end;
+  width: auto;
+  height: clamp(150px, 13vw, 210px);
+  max-width: 78%;
+  max-height: none;
+  margin: 0 0 calc(-1 * clamp(22px, 2.5vw, 32px));
+  object-position: bottom right;
+}
 .aud-card__no {
   font-family: 'Geologica';
   font-weight: 700;
   font-size: clamp(48px, 5vw, 80px);
   color: transparent;
   -webkit-text-stroke: 1px rgba(255,255,255,0.10);
-  margin-top: auto;
+  margin: 0;
   line-height: 1;
   letter-spacing: -0.04em;
-  align-self: flex-end;
+  align-self: center;
+  justify-self: end;
 }
 
 .diamond--aud-1 {
@@ -1082,6 +1103,38 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 900px) {
   .audience-grid { grid-template-columns: 1fr; }
   .diamond--aud-1, .diamond--aud-2 { display: none; }
+}
+@media (min-width: 621px) and (max-width: 900px) {
+  .aud-card:has(.card__img--inside-who) {
+    grid-template-columns: minmax(150px, 34%) minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+  }
+  .aud-card:has(.card__img--inside-who) .aud-card__title {
+    grid-column: 2 / -1;
+  }
+  .aud-card:has(.card__img--inside-who) .aud-card__lead {
+    grid-column: 2;
+  }
+  .aud-card:has(.card__img--inside-who) .aud-card__no {
+    grid-column: 3;
+  }
+  .aud-card .card__img--inside-who {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: end;
+    justify-self: start;
+    height: clamp(170px, 28vw, 230px);
+    max-width: 100%;
+    margin-bottom: calc(-1 * clamp(22px, 2.5vw, 32px));
+  }
+}
+@media (max-width: 620px) {
+  .aud-card {
+    min-height: 360px;
+  }
+  .aud-card .card__img--inside-who {
+    height: min(48vw, 210px);
+  }
 }
 
 /* ============================================================
