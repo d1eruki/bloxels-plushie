@@ -879,7 +879,6 @@ button { font-family: inherit; cursor: pointer; }
 .set-card__list li.license-outline {
   align-self: flex-start;
   isolation: isolate;
-  padding-left: 0;
   color: var(--c-text);
   background: none;
   -webkit-text-fill-color: currentColor;
@@ -895,7 +894,10 @@ button { font-family: inherit; cursor: pointer; }
 .set-card__list li.license-outline::after {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 22px;
   z-index: 0;
   border-radius: 999px;
   padding: 1px;
@@ -917,7 +919,8 @@ button { font-family: inherit; cursor: pointer; }
   transform: rotate(-45deg);
 }
 .set-card__list li.license-outline::before {
-  content: none;
+  content: '';
+  top: 15px;
 }
 .set-card__foot {
   display: flex;
