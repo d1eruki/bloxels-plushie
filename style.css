@@ -437,7 +437,7 @@ button { font-family: inherit; cursor: pointer; }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); }
+.hero { padding-top: clamp(40px, 9vw, 60px); padding-bottom: clamp(40px, 9vw, 60px); }
 .hero__inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
@@ -463,6 +463,41 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+.hero__badges .pill {
+  gap: 8px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+  text-transform: none;
+}
+.hero__badges .pill .material-icons-round {
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+.hero__badges .pill--accent {
+  background: linear-gradient(135deg, #f28d2a 0%, #f5a34d 100%);
+  color: #fff3ec;
+}
+.hero__badges .pill--accent-2 {
+  background: linear-gradient(135deg, #108ee9 0%, #3aa5ef 100%);
+  color: #eaf5ff;
+}
+.hero__badges .pill--accent-3 {
+  background: linear-gradient(135deg, #7953f5 0%, #9274f7 100%);
+  color: #f0e8ff;
+}
+.hero__badges .pill--accent-4 {
+  background: linear-gradient(135deg, #ef5b55 0%, #f27974 100%);
+  color: #fff0ef;
+}
+.hero__badges .pill--accent-5 {
+  background: linear-gradient(135deg, #3cc662 0%, #61d27f 100%);
+  color: #e8faed;
 }
 .hero__title-accent {
   display: inline-block;
@@ -841,6 +876,37 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--c-text);
   line-height: 1.4;
 }
+.set-card__list li.license-outline {
+  align-self: flex-start;
+  isolation: isolate;
+  padding-left: 0;
+  color: var(--c-text);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+.set-card__list li.license-outline b {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 8px 12px;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+.set-card__list li.license-outline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 999px;
+  padding: 1px;
+  background: linear-gradient(90deg, #e15fab 0%, #8966d7 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
 .set-card__list li::before {
   content: '';
   position: absolute;
@@ -849,6 +915,9 @@ button { font-family: inherit; cursor: pointer; }
   border-left: 2px solid var(--c-pink);
   border-bottom: 2px solid var(--c-pink);
   transform: rotate(-45deg);
+}
+.set-card__list li.license-outline::before {
+  content: none;
 }
 .set-card__foot {
   display: flex;
@@ -963,13 +1032,19 @@ button { font-family: inherit; cursor: pointer; }
   overflow-wrap: anywhere;
 }
 
-.progress { display: flex; flex-direction: column; gap: 10px; }
+.progress { display: flex; flex: 1; flex-direction: column; gap: 10px; }
 .progress__row { display: flex; justify-content: space-between; align-items: baseline; }
 .progress__label {
   min-width: 0;
   font-size: 12px;
   color: var(--c-text-mute);
   letter-spacing: 0.083em;
+}
+.progress > .progress__label.text-gradient {
+  margin-top: auto;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 .progress__value { font-size: 12px; color: var(--c-text); font-weight: 500; }
 .progress__track {
