@@ -278,6 +278,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .badge {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
@@ -471,11 +473,11 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0;
 }
 .hero__badges {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
-  width: max-content;
-  max-width: none;
+  width: 100%;
+  max-width: 760px;
   overflow: visible;
   position: relative;
   z-index: 1;
@@ -483,11 +485,11 @@ button { font-family: inherit; cursor: pointer; }
 .hero__badges .pill {
   position: relative;
   display: flex;
-  width: max-content;
-  min-width: clamp(118px, 9vw, 144px);
+  width: 100%;
+  min-width: 0;
   max-width: none;
-  min-height: clamp(134px, 11vw, 164px);
-  padding: clamp(18px, 2vw, 22px) clamp(18px, 2vw, 24px) 18px;
+  min-height: clamp(150px, 11vw, 168px);
+  padding: clamp(18px, 2vw, 22px) 12px 18px;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
@@ -547,14 +549,15 @@ button { font-family: inherit; cursor: pointer; }
 .hero__badges .pill__label {
   display: block;
   order: 3;
-  width: max-content;
-  max-width: 220px;
+  width: 100%;
+  max-width: 100%;
   min-height: 2.2em;
   color: rgba(247, 239, 255, 0.92);
   font-size: var(--fs-body);
   font-weight: 400;
   overflow-wrap: normal;
-  white-space: normal;
+  white-space: nowrap;
+  word-break: normal;
 }
 .hero__badges .pill__label strong,
 .hero__badges .pill__label--strong {
@@ -662,27 +665,36 @@ button { font-family: inherit; cursor: pointer; }
 
 @media (max-width: 900px) {
   .hero__inner { grid-template-columns: 1fr; }
-  .hero__badges {
-    flex-wrap: wrap;
+  .hero__cta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
-    max-width: 520px;
+  }
+  .hero__cta .btn {
+    width: 100%;
+    min-width: 0;
+  }
+  .hero__badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: none;
   }
   .hero__badges .pill {
-    flex: 1 1 150px;
-    width: auto;
     min-height: 136px;
   }
   .hero__visual { order: -1; aspect-ratio: 1.2 / 1; max-width: 520px; margin: 0 auto; width: 100%; }
 }
 
 @media (max-width: 620px) {
+  .hero__cta {
+    grid-template-columns: 1fr;
+  }
   .hero__badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
     max-width: 100%;
   }
   .hero__badges .pill {
-    flex: 1 1 calc(50% - 10px);
-    min-width: 0;
     min-height: 126px;
     padding: 12px 8px;
     border-radius: 16px;
@@ -705,6 +717,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .card {
   position: relative;
+  isolation: isolate;
   background: var(--c-card);
   border: 1px solid var(--c-line-strong);
   border-radius: var(--radius-xl);
@@ -718,11 +731,36 @@ button { font-family: inherit; cursor: pointer; }
   transition: transform .3s var(--ease), border-color .3s var(--ease);
 }
 .card:hover { transform: translateY(-3px); border-color: rgba(255,122,184,0.35); }
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at var(--card-glow-x, 50%) 0%, rgba(255,255,255,0.13), transparent 38%),
+    radial-gradient(circle at var(--card-glow-x, 50%) var(--card-glow-y, 42%), var(--badge-glow, rgba(255,77,151,0.22)), transparent 58%);
+  pointer-events: none;
+}
 
 .card--featured {
   background: linear-gradient(135deg, rgba(255,77,151,0.16) 0%, rgba(123,63,228,0.12) 100%);
   border-color: transparent;
 }
+.card--inside-1,
+.card--inside-3,
+.card--inside-5 {
+  --badge-glow: rgba(255, 77, 151, 0.22);
+}
+.card--inside-2,
+.card--inside-4 {
+  --badge-glow: rgba(126, 87, 255, 0.25);
+}
+.card--inside-1 { --card-glow-x: 82%; --card-glow-y: 54%; }
+.card--inside-2 { --card-glow-x: 86%; --card-glow-y: 56%; }
+.card--inside-3 { --card-glow-x: 84%; --card-glow-y: 50%; }
+.card--inside-4 { --card-glow-x: 78%; --card-glow-y: 58%; }
+.card--inside-5 { --card-glow-x: 84%; --card-glow-y: 60%; }
 .card--wide { grid-column: span 1; }
 .card__title {
   font-family: 'Geologica';
@@ -732,6 +770,9 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.1;
   position: relative;
   z-index: 2;
+  text-shadow:
+    0 0 16px rgba(255, 105, 215, 0.5),
+    0 0 28px rgba(126, 87, 255, 0.25);
 }
 .card__lead {
   color: var(--c-text-mute);
@@ -746,6 +787,7 @@ button { font-family: inherit; cursor: pointer; }
 .card__body { display: flex; flex-direction: column; gap: 13px; max-width: 65%; z-index: 2; position: relative; }
 .card__img {
   position: absolute;
+  z-index: 1;
   max-width: calc(100% - 32px);
   max-height: calc(100% - 32px);
   object-fit: contain;
@@ -790,12 +832,18 @@ button { font-family: inherit; cursor: pointer; }
 .btn--inside { align-self: flex-start; margin-top: auto; position: relative; z-index: 2; }
 
 @media (max-width: 1100px) {
-  .inside-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-  .card--inside-1 { grid-column: 1; grid-row: 1; }
-  .card--inside-2 { grid-column: 2; grid-row: 1; }
-  .card--inside-3 { grid-column: 1 / -1; grid-row: 2; }
-  .card--inside-4 { grid-column: 1; grid-row: 3; flex-direction: column; align-items: stretch; }
-  .card--inside-5 { grid-column: 2; grid-row: 3; }
+  .inside-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 16px; }
+  .card { padding: 22px; min-height: 220px; }
+  .card--inside-1,
+  .card--inside-2,
+  .card--inside-3,
+  .card--inside-4,
+  .card--inside-5 {
+    grid-column: 1;
+    grid-row: auto;
+    align-items: stretch;
+  }
+  .card--inside-4 { flex-direction: column; }
   .card--inside-1 > :not(.card__img),
   .card--inside-2 > :not(.card__img),
   .card--inside-3 > :not(.card__img),
@@ -813,6 +861,8 @@ button { font-family: inherit; cursor: pointer; }
   .card { padding: 22px; min-height: 220px; }
   .card--inside-1, .card--inside-2, .card--inside-3, .card--inside-4, .card--inside-5 {
     grid-column: 1; grid-row: auto; align-items: stretch;
+    --card-glow-x: 50%;
+    --card-glow-y: 72%;
   }
   .card--inside-1 > :not(.card__img),
   .card--inside-2 > :not(.card__img),
