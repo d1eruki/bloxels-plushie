@@ -255,6 +255,8 @@ document.addEventListener('click', (e) => {
     if (preview) preview.style.background = hex;
     if (hexEl) hexEl.textContent = hex.toUpperCase();
     if (rgbEl) rgbEl.textContent = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+
+    orderBtn.setAttribute('data-offers', `[{"article":2,"name":"Большой котик 25см (${hex.toUpperCase()})","count":1,"price":4999,"weight":1,"image":"assets/cat-pink.png"}]`);
   };
 
   const open = () => {
@@ -286,9 +288,9 @@ document.addEventListener('click', (e) => {
 
   closeBtn?.addEventListener('click', close);
   backdrop?.addEventListener('click', close);
-  orderBtn?.addEventListener('click', () => {
-    window.alert(`Выбранный цвет: ${selectedColor.hex}`);
-  });
+  // orderBtn?.addEventListener('click', () => {
+  //   window.alert(`Выбранный цвет: ${selectedColor.hex}`);
+  // });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !modal.hidden) close();
   });
