@@ -1151,7 +1151,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .price { display: flex; align-items: baseline; gap: 12px; }
 .price__old {
-  font-size: var(--fs-body);
+  font-size: clamp(16px, 1.2vw, 18px);
   color: var(--c-text-mute);
   text-decoration: line-through;
 }
