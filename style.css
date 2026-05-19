@@ -39,7 +39,10 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 body {
   font-family: 'Geologica', system-ui, sans-serif;
   font-size: var(--fs-body);
@@ -372,7 +375,7 @@ button { font-family: inherit; cursor: pointer; }
   pointer-events: none;
   transition: opacity .25s var(--ease);
 }
-.mobile-menu[hidden] { display: flex; }
+.mobile-menu[hidden] { display: none; }
 .mobile-menu.is-open {
   opacity: 1;
   pointer-events: auto;
