@@ -256,7 +256,7 @@ document.addEventListener('click', (e) => {
     if (hexEl) hexEl.textContent = hex.toUpperCase();
     if (rgbEl) rgbEl.textContent = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
 
-    orderBtn.setAttribute('data-offers', `[{"article":2,"name":"Большой котик 25см (${hex.toUpperCase()})","count":1,"price":4387,"weight":1,"image":"assets/cat-pink.png"}]`);
+    orderBtn.setAttribute('href', `https://forms.yandex.ru/cloud/6a0c69f1068ff03d6931f939/?toy_size=25cm&toy_color=%23${hex.toUpperCase().substring(1)}`);
   };
 
   const open = () => {
