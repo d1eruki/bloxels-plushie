@@ -39,10 +39,7 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
+html { scroll-behavior: smooth; }
 body {
   font-family: 'Geologica', system-ui, sans-serif;
   font-size: var(--fs-body);
