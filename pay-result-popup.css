@@ -1,0 +1,171 @@
+.pay-result-popup__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 10, 50, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(4px);
+    padding: 1rem;
+}
+
+.pay-result-popup__overlay.pay-result-popup__show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.pay-result-popup__popup {
+    /* font-family: 'Nunito', sans-serif; */
+    background: #fff;
+    border-radius: 24px;
+    padding: 2rem 1.75rem 1.75rem;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    transform: scale(0.85) translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 2.5px solid #FF4BC2;
+    box-shadow: 0 0 0 1px rgba(255, 75, 194, 0.12), 0 0 28px 6px rgba(255, 75, 194, 0.3), 0 0 70px 14px rgba(255, 75, 194, 0.1);
+}
+.pay-result-popup__fail .pay-result-popup__popup {
+    border: 2.5px solid #6478ff;
+    box-shadow: 0 0 0 1px rgba(100,120,255,0.12), 0 0 28px 6px rgba(100,120,255,0.32), 0 0 70px 14px rgba(100,120,255,0.12);
+}
+
+.pay-result-popup__overlay.pay-result-popup__show .pay-result-popup__popup {
+    transform: scale(1) translateY(0);
+}
+
+.pay-result-popup__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.06);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    transition: background 0.15s;
+    font-family: sans-serif;
+}
+
+.pay-result-popup__close:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.pay-result-popup__cat-placeholder {
+    width: 120px;
+    height: 110px;
+    margin: 0 auto 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.pay-result-popup__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 0.7rem;
+    background: #fff0fb;
+    color: #d4008a;
+}
+.pay-result-popup__fail .pay-result-popup__badge {
+    background: #f0f1ff; 
+    color: #3a47e8;
+}
+
+.pay-result-popup__badge-check {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #d4008a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pay-result-popup__popup h2 {
+    font-size: 19px;
+    font-weight: 900;
+    margin: 0 0 0.45rem;
+    line-height: 1.25;
+    color: #1a0a30;
+}
+
+.pay-result-popup__popup p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #7a6e90;
+    margin: 0 0 1.2rem;
+}
+
+.pay-result-popup__btn-primary {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    /* font-family: 'Nunito', sans-serif; */
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.15s;
+    margin-bottom: 0.55rem;
+    display: block;
+    background: #FF4BC2;
+    color: #fff;
+}
+.pay-result-popup__fail .pay-result-popup__btn-primary {
+    background: #6478ff;
+}
+
+.pay-result-popup__btn-primary:hover {
+    transform: translateY(-1px);
+}
+
+.pay-result-popup__btn-primary:active {
+    transform: scale(0.98);
+}
+
+.pay-result-popup__btn-secondary {
+    background: none;
+    border: none;
+    /* font-family: 'Nunito', sans-serif; */
+    font-size: 13px;
+    font-weight: 700;
+    color: #b0a0c0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s;
+}
+
+.pay-result-popup__btn-secondary:hover {
+    color: #FF4BC2;
+}
+.pay-result-popup__fail .pay-result-popup__btn-secondary:hover {
+    color: #6478ff;
+}

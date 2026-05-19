@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700;900&family=Manrope:wght@700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" />
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="pay-result-popup.css" />
 <link rel="icon" href="assets/favicon.png" />
 </head>
 <body id="top">
@@ -526,6 +527,37 @@
     data-lazy-load="true"
     data-key="281593-1717-1958"
     style="color: initial;">
+</div>
+
+<div class="pay-result-popup__overlay" id="pay-result-popup__success-overlay">
+  <div class="pay-result-popup__popup">
+    <button class="pay-result-popup__close" onclick="payResultPopupClose()" aria-label="Закрыть">×</button>
+    <div class="pay-result-popup__cat-placeholder"><img class="" src="assets/cat-happy.png" alt="Котик 🐱" /></div>
+    <div class="pay-result-popup__badge">
+      <span class="pay-result-popup__badge-check">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+          <path d="M1.5 4L3.2 5.8L6.5 2.2" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Успешная оплата
+    </div>
+    <h2>Ты залутал кота! 🎉</h2>
+    <p>Котик уже собирается, чтобы отправиться к тебе! Лицензия на платформу и уведомление о готовности котика придут на почту.</p>
+    <button class="pay-result-popup__btn-primary" onclick="payResultPopupClose()">Отлично, жду котика!</button>
+    <button class="pay-result-popup__btn-secondary" onclick="payResultPopupClose()">Перейти на платформу →</button>
+  </div>
+</div>
+
+<div class="pay-result-popup__overlay pay-result-popup__fail" id="pay-result-popup__fail-overlay">
+  <div class="pay-result-popup__popup">
+    <button class="pay-result-popup__close" onclick="payResultPopupClose()" aria-label="Закрыть">×</button>
+    <div class="pay-result-popup__cat-placeholder"><img class="" src="assets/cat-sad.png" alt="Котик 😿" /></div>
+    <div class="pay-result-popup__badge">⚠ Ошибка оплаты</div>
+    <h2>Упс! Оплата не прошла 🐾</h2>
+    <p>Проверь данные карты или попробуй другой способ — котик всё ещё тебя ждёт!</p>
+    <button class="pay-result-popup__btn-primary" data-preorder onclick="payResultPopupClose()">Попробовать снова</button>
+    <a class="pay-result-popup__btn-secondary" href="mailto:">Написать в поддержку</a>
+  </div>
 </div>
 
 <script src="https://api.esplc.ru/widgets/modal/app.js"></script>

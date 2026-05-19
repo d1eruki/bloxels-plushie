@@ -301,3 +301,29 @@ document.addEventListener('click', (e) => {
     }
   });
 })();
+
+// ─── Pay Result Popup ───────────────────────────────────────
+(() => {
+  const successPopup = document.getElementById('pay-result-popup__success-overlay');
+  const failPopup = document.getElementById('pay-result-popup__fail-overlay');
+
+  const payResultPopupClose = () => {
+    successPopup.classList.remove('pay-result-popup__show');
+    failPopup.classList.remove('pay-result-popup__show');
+  };
+
+  const payResultPopupOpenSuccess = () => {
+    successPopup.classList.add('pay-result-popup__show');
+  };
+
+  const payResultPopupOpenFail = () => {
+    failPopup.classList.add('pay-result-popup__show');
+  };
+
+  if (window.location.hash === '#order-success')
+    payResultPopupOpenSuccess()
+  if (window.location.hash === '#order-fail')
+    payResultPopupOpenFail()
+
+  window.payResultPopupClose = payResultPopupClose;
+})();
