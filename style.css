@@ -1219,6 +1219,7 @@ button { font-family: inherit; cursor: pointer; }
   pointer-events: none;
 }
 .set-card__foot {
+  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
