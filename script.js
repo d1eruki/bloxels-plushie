@@ -82,7 +82,7 @@ fixHangingPrepositions();
 
 // ─── Configurable presale end date (UTC+3 / Moscow) ─────────
 // Change this to update countdown:
-const PRESALE_END = new Date('2026-05-31T23:59:59+03:00');
+const PRESALE_END = new Date('2026-06-30T23:59:59+03:00');
 
 // ─── Preorder event ─────────────────────────────────────────
 // All "Оформить предзаказ" / "Купить" buttons fire this single event.
